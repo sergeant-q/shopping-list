@@ -15,7 +15,16 @@ $(document).ready(function() {
   // renderList(state, $('.shopping-list'));
 
   // remove item function
-
+  function removeItem(state, itemName) {
+    var itemsArray = state.items;
+    var index;
+    for (var i = 0; i < itemsArray.length; i++) {
+      if (itemsArray[i].name == itemName) {
+        index = i;
+      }
+    }
+    itemsArray.splice(index,1);
+  }
   // check/uncheck item function
 
   // render list function
@@ -34,6 +43,7 @@ $(document).ready(function() {
 
     });
     JQueryElement.html(renderedHTML);
+    $('#shopping-list-entry').val('')
   }
 
 
@@ -55,11 +65,13 @@ $(document).ready(function() {
   });
 
   $('ul').on('click', 'button.shopping-item-toggle', function(event){
-    var element = $(event.target);
-    console.log(element);
-    console.log(element.closest('li span'));
+    $(this).closest('li').find('.shopping-item').toggleClass('shopping-item__checked');
+  });
 
-    // .toggleClass('shopping-item__checked');
-  })
+  $('ul').on('click', 'button.shopping-item-delete', function(event){
+    var itemName = $(this).closest('li').find('.shopping-item').text();
+    removeItem(state, itemName);
+    renderList(state, $('.shopping-list'));
+  });
 
 });
