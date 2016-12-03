@@ -12,7 +12,7 @@ $(document).ready(function() {
     var itemsArray = state.items;
     var index;
     for (var i = 0; i < itemsArray.length; i++) {
-      if (itemsArray[i].name == itemName) {
+      if (itemsArray[i].name === itemName) {
         index = i;
       }
     }
