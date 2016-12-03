@@ -1,8 +1,4 @@
 $(document).ready(function() {
-  // listen on the input field for a return or
-  // listen on the submit button
-
-  // initialize state object
   var state = {
     items: []
   }
@@ -11,9 +7,6 @@ $(document).ready(function() {
   function addItem(state, itemObj) {
     state.items.push(itemObj);
   }
-
-  // renderList(state, $('.shopping-list'));
-
   // remove item function
   function removeItem(state, itemName) {
     var itemsArray = state.items;
@@ -25,8 +18,6 @@ $(document).ready(function() {
     }
     itemsArray.splice(index,1);
   }
-  // check/uncheck item function
-
   // render list function
   function renderList(state, JQueryElement) {
     var renderedHTML = state.items.map(function(item) {
@@ -45,7 +36,6 @@ $(document).ready(function() {
     JQueryElement.html(renderedHTML);
     $('#shopping-list-entry').val('')
   }
-
 
   $('#js-shopping-list-form').on('submit keypress', function(event) {
      var type = event.type;
